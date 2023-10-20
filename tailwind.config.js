@@ -18,8 +18,8 @@ module.exports = {
 		extend: {
 			fontFamily: {
 				roboto: ['var(--font-roboto-mono)'],
-				sans: ["var(--font-opensans)"],
-				dm: ["var(--font-dm-serif)"]
+				noto: ['var(--font-noto-sans)'],
+				nanum: [`var(--font-nanum)`],
 			},
 			colors: {
 				mainColor: `#6064d4`,

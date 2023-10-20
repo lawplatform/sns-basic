@@ -5,12 +5,27 @@ import Provider from './_trpc/Provider';
 import Navbar from '@/src/components/Navbar';
 import { ThemeProvider } from '@/src/components/theme-provider';
 import { Toaster } from '@/components/ui/toaster';
-import { Open_Sans, Roboto_Mono, DM_Serif_Text } from 'next/font/google'
+import { Open_Sans, Roboto_Mono, DM_Serif_Text, Noto_Sans, Nanum_Gothic } from 'next/font/google'
+import N_vertical from '@/src/components/N_vertical';
 
 const openSans = Open_Sans({
 	subsets: ['latin'],
 	display: 'swap',
 	variable: '--font-opensans',
+})
+
+const Nanum = Nanum_Gothic({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-nanum',
+	weight: '400',
+})
+
+const noto = Noto_Sans({
+	subsets: ['latin'],
+	display: 'swap',
+	variable: '--font-noto-sans',
+	weight: '200',
 })
 
 const robotoMono = Roboto_Mono({
@@ -59,7 +74,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }) {
 	return (
-		<html lang="en" className={`${openSans.variable} ${robotoMono.variable} ${dm_serif.variable} font-sans`}>
+		<html lang="en" className={`${openSans.variable} ${robotoMono.variable} ${dm_serif.variable} ${noto.variable} ${Nanum.variable}`}>
 			<body >
 				<Provider>
 					<ThemeProvider
@@ -68,13 +83,13 @@ export default function RootLayout({
 						enableSystem
 						disableTransitionOnChange
 					>
-						<div className="flex-flex-col text-center">
-							<div className='h-20 '><Navbar /></div>
-							<div >
+						<div className="flex flex-row">
+							<N_vertical />
+							<div className='mx-auto w-full px-2 '>
 								{children}
 							</div>
+							<Toaster />
 						</div>
-						<Toaster />
 					</ThemeProvider>
 				</Provider>
 			</body>
